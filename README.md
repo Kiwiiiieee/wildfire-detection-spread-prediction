@@ -88,12 +88,9 @@ Only code that is mine or that we wrote together is included here. The detection
 - curly quotes turned back into MATLAB straight quotes (31 in 10.2, 87 in 10.3)
 - indentation restored from the printed layout
 
-**Three lines of 10.2 are cut off at the right page margin in the PDF** and cannot be recovered from the report. Each one is marked in the file with a `% [NOTE: …]` comment:
-1. the `fprintf("Using %d ERA5 steps …` status message
-2. the list of date formats `fmts = {…}` in `parseOriginDatetime`
-3. the `try … catch,` line in `parseOriginDatetime`
+Three lines of 10.2 run off the right page margin in the PDF (the `fprintf("Using %d ERA5 steps …` message, the `fmts = {…}` date-format list and the `try … catch, end` line in `parseOriginDatetime`). They were completed from the original code.
 
-The file is shown as printed and needs these three lines completed before it will run. The listing also contains the original author's local path to the ERA5 file, which must be changed.
+The script still contains the original author's local path to the ERA5 file (`era5Nc = …`). Change it to point to `data/data_stream-oper_stepType-instant.nc` before running.
 
 ## Data
 | Path | Content |
@@ -101,17 +98,17 @@ The file is shown as printed and needs these three lines completed before it wil
 | `data/MODIS/fire_archive_J1V-C2_676101.csv`, `fire_nrt_J1V-C2_676101.csv` | NASA FIRMS VIIRS (J1V-C2) active-fire points (archive and near-real-time) |
 | `data/MODIS/citation.txt` | Source note for the ITU-R digital maps |
 | `data/data_stream-oper_stepType-instant.csv` | ERA5 hourly single-level data for 2 July 2025 over the AOI (u10, v10, d2m, t2m) |
+| `data/data_stream-oper_stepType-instant.nc` | The same ERA5 data in NetCDF, read by the prediction scripts (`Tracking_Predicting_Reporting.m`, `B_…`) |
 | `data/meteo/` | ERA5 download (`.zip`/`.grib`) and its CSV conversion |
 
 **Not included (too large for GitHub, about 4.2 GB):**
 - **Sentinel-2 L2A tiles** T35SMC for 22 June, 2 July, 5 July and 10 July 2025 (IDs in the report, Section 4.1). Download them free from the [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu/).
-- **ERA5 reanalysis in NetCDF** (`data_stream-oper_stepType-instant.nc`), used by the prediction scripts. Download it from the [Copernicus Climate Data Store](https://cds.climate.copernicus.eu/) (ERA5 hourly data on single levels: 10 m u/v wind, 2 m temperature, 2 m dewpoint) for the AOI and dates above.
 - **ITU-R digital maps** (`ITURDigitalMaps.tar.gz`, `p836.mat`, `p837.mat`, `p840.mat`, `maps.mat`). These are derived from ITU-R Recommendations P.836, P.837, P.840 and others, as listed in `data/MODIS/citation.txt`.
 
 ## How to reproduce
 - **Alerting layer:** run `code/matlab/Reporting.m` in MATLAB. It is self-contained and regenerates Figures 8–12.
 - **Spread prediction:**
-  - The prediction scripts need the ERA5 NetCDF file (see above).
+  - The ERA5 NetCDF file is included in `data/`. `Tracking_Predicting_Reporting.m` opens it by file name only, so run it with `data/` as the current folder (or copy the file next to the script).
   - `B_…` and `C_…` also need `A_satellite_outputs.mat`, the output of the Sentinel-2 detection script (appendix 10.1, my teammate's part, not included here).
   - The processing steps and parameters are fully described in the report.
 

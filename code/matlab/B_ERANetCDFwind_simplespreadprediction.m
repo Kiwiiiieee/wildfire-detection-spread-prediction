@@ -59,8 +59,7 @@ if isempty(idxs)
     [~,i0] = min(abs(tDT - t0));
     idxs = i0 : min(i0 + round(T_hours/dt_hours), numel(tDT));
 end
-% [NOTE: the next line is cut off at the right page margin in the report PDF; the rest of the line is not recoverable]
-fprintf("Using %d ERA5 steps from %s to %s\n\n", numel(idxs), string(tDT(idxs(1))), string(tDT(idxs(end)
+fprintf("Using %d ERA5 steps from %s to %s\n\n", numel(idxs), string(tDT(idxs(1))), string(tDT(idxs(end))));
 Nt = numel(idxs);
 %% Preallocate outputs on AOI grid
 uA = zeros(m,n,Nt,'single');
@@ -164,11 +163,9 @@ tDT.TimeZone = "";
 end
 function origin = parseOriginDatetime(s)
 s = char(strtrim(string(s)));
-% [NOTE: the next line is cut off at the right page margin in the report PDF; the rest of the line is not recoverable]
-fmts = {'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd''T''HH:mm:ss','yyyy-MM-dd HH:mm','yyyy-MM-dd','yyyy-MM-dd''T''
+fmts = {'yyyy-MM-dd HH:mm:ss','yyyy-MM-dd''T''HH:mm:ss','yyyy-MM-dd HH:mm','yyyy-MM-dd','yyyy-MM-dd''T''HH:mm','dd-MMM-yyyy HH:mm:ss','dd-MMM-yyyy'};
 for i=1:numel(fmts)
-    % [NOTE: the next line is cut off at the right page margin in the report PDF; the rest of the line is not recoverable]
-    try, origin = datetime(s, "InputFormat", fmts{i}, "TimeZone",""); origin.TimeZone=""; return; catch,
+    try, origin = datetime(s, "InputFormat", fmts{i}, "TimeZone",""); origin.TimeZone=""; return; catch, end
 end
 origin = datetime(s); origin.TimeZone="";
 end
