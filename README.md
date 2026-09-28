@@ -1,6 +1,6 @@
 # Satellite-Based Wildfire Detection and Spread Prediction
 
-*Team of 2 · course project · October 2025 – January 2026 · my part: communications layer (LTE alert link budget, QPSK) and part of the prediction model*
+*Team of 2 · course project · October 2025 to January 2026 · my part: communications layer (LTE alert link budget, QPSK) and part of the prediction model*
 
 ![Model prediction vs satellite observation](figures/report-fig5-prediction-vs-satellite.png)
 
@@ -75,7 +75,7 @@ Figures are taken from the report (figure numbers and captions as in the report)
 Only code that is mine or that we wrote together is included here. The detection and tracking scripts written by my teammate are not part of this repository.
 
 | Path | Content | Author | Opens with |
-|---|---|---|---|
+|:--|:--|:--|:--|
 | `code/matlab/Reporting.m` | Alerting layer: COST-231 Hata link budget, link-margin distances, QPSK BER, antenna patterns (2D/3D), constellation, alert decision gate. Report appendix 10.4 prints the same code. | Kaoutar Ammara | MATLAB (Communications Toolbox for `berawgn`, `pskmod`, `scatterplot`) |
 | `code/matlab/B_ERANetCDFwind_simplespreadprediction.m` | ERA5 NetCDF reading, time synchronisation and interpolation of wind, temperature and humidity onto the AOI grid (report appendix 10.2) | Joint | MATLAB |
 | `code/matlab/C_Realistic_Final.m` | Wind-driven elliptical fire-spread model, IoU validation and area-growth plots (report appendix 10.3) | Joint | MATLAB (Image Processing Toolbox) |
@@ -94,7 +94,7 @@ The script still contains the original author's local path to the ERA5 file (`er
 
 ## Data
 | Path | Content |
-|---|---|
+|:--|:--|
 | `data/MODIS/fire_archive_J1V-C2_676101.csv`, `fire_nrt_J1V-C2_676101.csv` | NASA FIRMS VIIRS (J1V-C2) active-fire points (archive and near-real-time) |
 | `data/MODIS/citation.txt` | Source note for the ITU-R digital maps |
 | `data/data_stream-oper_stepType-instant.csv` | ERA5 hourly single-level data for 2 July 2025 over the AOI (u10, v10, d2m, t2m) |
@@ -120,5 +120,4 @@ Team of two: **Kaoutar Ammara** and **Yemeen Khalid**.
 ## References
 Sentinel-2 User Handbook (ESA, 2023); ERA5 reanalysis (Copernicus Climate Change Service); COST-231 Hata model; NASA FIRMS. The full reference list is in the report.
 
----
 Kaoutar Ammara · Aerospace Engineer · [GitHub](https://github.com/Kiwiiiieee) · [LinkedIn](https://linkedin.com/in/kaoutar-ammara)
